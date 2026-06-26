@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.legacy:build"
+
+[project]
+name = "pdp-connect-mock"
+version = "0.1.0"
+description = "Local mock PDP (Plateforme de Dématérialisation Partenaire) for French e-invoicing 2026 reform testing"
+readme = "README.md"
+license = { text = "Apache-2.0" }
+requires-python = ">=3.10"
+keywords = [
+    "PDP", "Plateforme Dématérialisation Partenaire", "facturation électronique",
+    "France 2026", "e-invoicing", "Factur-X", "mock", "test"
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Programming Language :: Python :: 3.10",
+    "Topic :: Office/Business :: Financial",
+    "Topic :: Software Development :: Testing",
+]
+dependencies = [
+    "fastapi>=0.111",
+    "uvicorn>=0.30",
+    "httpx>=0.27",
+    "pydantic>=2.0",
+    "click>=8.1",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0", "pytest-anyio", "anyio"]
+
+[project.scripts]
+pdp-mock = "pdp_mock.cli:cli"
+
+[project.urls]
+Homepage = "https://tevasoft.eu"
+Repository = "https://github.com/tevasoft/pdp-connect-mock"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
